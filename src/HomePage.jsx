@@ -112,8 +112,8 @@ export default function HomePage() {
                             </div>
                             <div className="hero-backdrop">
                                 <div className="backdrop-overlay"></div>
-                                <iframe
-                                src={`https://www.youtube.com/embed/${anime.trailer.youtube_id}`}
+                                <img
+                                src={anime.images.jpg.large_image_url}
                                 alt=""
                                 className="backdrop-image"
                                 />
