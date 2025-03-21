@@ -10,6 +10,7 @@ export default function HomePage() {
     const [animeList, setAnimeList] = useState([]);
     const [upcomingAnime, setUpcomingAnime] = useState([]);
     const [error, setError] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
 
@@ -57,14 +58,26 @@ export default function HomePage() {
 
     return (
         <>
-            {/* <nav>
-                <ul>
-                    <li><a href='#'/>Home</li>
-                    <li><a href='#'/>Series</li>
-                    <li><a href='#'/>Movies</li>
-                    <li><a href='#'/>Popular</li>
-                </ul>
-            </nav> */}
+                <nav className="navbar">
+                    <div className='nav-container'>
+                        <img src="search-svgrepo-com.svg" alt="Search" className="nav-icon search-icon" />
+                        
+                        <button className="menu-button" onClick={() => setIsOpen(!isOpen)}>
+                            <img src="burger-menu-right-svgrepo-com.svg" height={30} width={30} alt="Menu" />
+                        </button>
+
+                        {isOpen && (
+                            <div className="menu">
+                                <ul>
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="/series">Series</a></li>
+                                    <li><a href="/movies">Movies</a></li>
+                                    <li><a href="/popular">Popular</a></li>
+                                </ul>
+                            </div>
+                        )}
+                    </div>
+                </nav>
                 <div className="hero-swiper-container">
                     <Swiper
                         spaceBetween={0}
@@ -112,10 +125,10 @@ export default function HomePage() {
                             </div>
                             <div className="hero-backdrop">
                                 <div className="backdrop-overlay"></div>
-                                <img
-                                src={anime.images.jpg.large_image_url}
-                                alt=""
-                                className="backdrop-image"
+                                <img 
+                                    src={`https://img.youtube.com/vi/${anime.trailer.youtube_id}/maxresdefault.jpg`}
+                                    alt="Trailer thumbnail"
+                                    className="backdrop-image"
                                 />
                             </div>
                             </div>
@@ -143,6 +156,11 @@ export default function HomePage() {
                         <div className='date'>{ anime.year }</div>
                     </div>
                 ))}
+            </div>
+            <div className='footer'>
+                <footer>
+                    Made with ❤️ by Murunwa Maphiri
+                </footer>
             </div>
         </>
     )
