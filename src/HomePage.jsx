@@ -12,19 +12,21 @@ export default function HomePage() {
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     let [pageNumber, setPageNumber] = useState(1);
+    const [pages, setPages] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        const getOngoingAnime = async() => {
+        let getOngoingAnime = async() => {
             setIsLoading(true);
             try {
-                const res = await fetch(`https://api.jikan.moe/v4/seasons/now?limit=24&page=1`);
+                const res = await fetch(`https://api.jikan.moe/v4/seasons/now?limit=24&page=${pageNumber}`);
                 if (!res.ok) {
                     throw new Error(`HTTP error! status: ${res.status}`);
                 }
     
                 const data = await res.json();
                 setAnimeList(data.data);
+                handlePageChange(data.pagination.items.total);
             } catch (error) {
                 setError(error.message);
                 console.error(`Error occured while fetching data: `, error);
@@ -33,7 +35,7 @@ export default function HomePage() {
             }
         }
         getOngoingAnime();
-    }, [])
+    }, [pageNumber])
 
     useEffect(() => {
         const getUpcomingAnime = async() => {
@@ -60,10 +62,22 @@ export default function HomePage() {
         getUpcomingAnime();
     }, []);
 
-    // const handlePageChange = () => {
-    //     setPageNumber(prevPage => prevPage + 1)
-    //     getOngoingAnime(pageNumber)
-    // }
+    const handlePageChange = (totalItems) => {
+        const totalPages = Math.ceil(totalItems / 24);
+        setPages([...Array(totalPages).keys()].map(i => i + 1)); // Generates an array [1,2,3,...]
+    };
+
+    const nextPage = () => {
+        if (pageNumber < pages.length) {
+            setPageNumber(prev => prev + 1)
+        }
+    }
+
+    const previousPage = () => {
+        if (pageNumber > 1) {
+            setPageNumber(prev => prev - 1)
+        }
+    }
 
     return (
         <>
@@ -96,9 +110,9 @@ export default function HomePage() {
                                 />
                                 </div>
                                 <div className="hero-info">
-                                {/* <div className="hero-status">
+                                <div className="hero-status">
                                     {anime.status === "Not yet aired" ? "Upcoming" : anime.status}
-                                </div> */}
+                                </div>
                                 <h2 className="hero-title">
                                     {anime.title}
                                     <span className="hero-title-jp">{anime.title_japanese}</span>
@@ -148,15 +162,39 @@ export default function HomePage() {
             </div>
             <hr className='heading-rule'></hr>
             <div className="pagination-container">
-                <p className="pagination-info">Page 1</p>
-                <div className="pagination">
-                    <button className="pagination-btn" disabled>{'<'}</button>
-                    <button className="pagination-page active">1</button>
-                    {/* <button className="pagination-page">2</button>
-                    <button className="pagination-page">3</button> */}
-                    <button className="pagination-btn">{'>'}</button>
-                </div>
+            <p className="pagination-info">Page {pageNumber} of {pages.length}</p>
+            <div className="pagination">
+                {/* Previous Button */}
+                <button 
+                    className="pagination-btn" 
+                    onClick={() => previousPage()} 
+                    disabled={pageNumber === 1}
+                >
+                    {'<'}
+                </button>
+
+                {/* Dynamically Render Page Numbers */}
+                {pages.map((page) => (
+                    <button 
+                        key={page} 
+                        className={`pagination-page ${page === pageNumber ? 'active' : ''}`}
+                        onClick={() => setPageNumber(page)}
+                    >
+                        {page}
+                    </button>
+                ))}
+
+                {/* Next Button */}
+                <button 
+                    className="pagination-btn" 
+                    onClick={() => nextPage()} 
+                    disabled={pageNumber === pages.length}
+                >
+                    {'>'}
+                </button>
             </div>
+        </div>
+
         </>
     )
 }
