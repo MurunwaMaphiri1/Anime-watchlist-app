@@ -10,7 +10,6 @@ export default function HomePage() {
     const [animeList, setAnimeList] = useState([]);
     const [upcomingAnime, setUpcomingAnime] = useState([]);
     const [error, setError] = useState('');
-    const [isOpen, setIsOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
 
@@ -18,7 +17,7 @@ export default function HomePage() {
         const getOngoingAnime = async() => {
             setIsLoading(true);
             try {
-                const res = await fetch(`https://api.jikan.moe/v4/seasons/now`);
+                const res = await fetch(`https://api.jikan.moe/v4/seasons/now?limit=24&page=1`);
                 if (!res.ok) {
                     throw new Error(`HTTP error! status: ${res.status}`);
                 }
@@ -40,7 +39,7 @@ export default function HomePage() {
     useEffect(() => {
         const getUpcomingAnime = async() => {
             try {
-                const res = await fetch(`https://api.jikan.moe/v4/seasons/upcoming?page=1`);
+                const res = await fetch(`https://api.jikan.moe/v4/seasons/upcoming?limit=6&page=1`);
 
                 if (!res.ok) {
                     throw new Error(`HTTP error!! status: ${res.status}`)
@@ -58,26 +57,6 @@ export default function HomePage() {
 
     return (
         <>
-                <nav className="navbar">
-                    <div className='nav-container'>
-                        <img src="search-svgrepo-com.svg" alt="Search" className="nav-icon search-icon" />
-                        
-                        <button className="menu-button" onClick={() => setIsOpen(!isOpen)}>
-                            <img src="burger-menu-right-svgrepo-com.svg" height={30} width={30} alt="Menu" />
-                        </button>
-
-                        {isOpen && (
-                            <div className="menu">
-                                <ul>
-                                    <li><a href="/">Home</a></li>
-                                    <li><a href="/series">Series</a></li>
-                                    <li><a href="/movies">Movies</a></li>
-                                    <li><a href="/popular">Popular</a></li>
-                                </ul>
-                            </div>
-                        )}
-                    </div>
-                </nav>
                 <div className="hero-swiper-container">
                     <Swiper
                         spaceBetween={0}
@@ -156,11 +135,6 @@ export default function HomePage() {
                         <div className='date'>{ anime.year }</div>
                     </div>
                 ))}
-            </div>
-            <div className='footer'>
-                <footer>
-                    Made with ❤️ by Murunwa Maphiri
-                </footer>
             </div>
         </>
     )
