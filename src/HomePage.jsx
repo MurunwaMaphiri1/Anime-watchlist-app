@@ -173,17 +173,6 @@ export default function HomePage() {
                     {'<'}
                 </button>
 
-                {/* Dynamically Render Page Numbers */}
-                {pages.map((page) => (
-                    <button 
-                        key={page} 
-                        className={`pagination-page ${page === pageNumber ? 'active' : ''}`}
-                        onClick={() => setPageNumber(page)}
-                    >
-                        {page}
-                    </button>
-                ))}
-
                 {/* Next Button */}
                 <button 
                     className="pagination-btn" 

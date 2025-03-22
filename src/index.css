@@ -299,39 +299,25 @@ body {
   
   .pagination-info {
     color: white;
-    font-size: 14px;
+    font-size: 17px;
   }
   
   .pagination {
     display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px;
     align-items: center;
     gap: 8px;
   }
   
   .pagination-btn {
     background: none;
-    border: none;
+    border: 2px solid white;
+    width: 50%;
     color: white;
     font-size: 18px;
     cursor: pointer;
-  }
-  
-  .pagination-btn:disabled {
-    color: gray;
-    cursor: default;
-  }
-  
-  .pagination-page {
-    background-color: #540D6E;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .pagination-page.active {
-    background-color: #540D6E;
-    font-weight: bold;
   }
   
 

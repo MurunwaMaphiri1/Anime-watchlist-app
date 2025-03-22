@@ -5,12 +5,14 @@ export default function Series() {
     const [seriesList, setSeriesList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState("");
+    let [pageNumber, setPageNumber] = useState(1);
+    const [pages, setPages] = useState([]);
 
     useEffect(() => {
         const getSeries = async() => {
             setIsLoading(true);
             try {
-                const res = await fetch(`https://api.jikan.moe/v4/top/anime?type=tv&limit=24&page=1`);
+                const res = await fetch(`https://api.jikan.moe/v4/top/anime?type=tv&limit=24&page=${pageNumber}`);
 
                 if (!res.ok) {
                     throw new Error(`HTTP error!! status: ${res.status}`);
@@ -18,6 +20,7 @@ export default function Series() {
     
                 const data = await res.json();
                 setSeriesList(data.data);
+                handlePageChange(data.pagination.items.total);
             } catch (error) {
                 setError(error.message);
                 console.error(`Error occured while fetching data: `, error);
@@ -26,7 +29,24 @@ export default function Series() {
             }
         }
         getSeries();
-    }, []);
+    }, [pageNumber]);
+
+    const handlePageChange = (totalItems) => {
+        const totalPages = Math.ceil(totalItems/24);
+        setPages([...Array(totalPages).keys()].map(i => i + 1));
+    }
+
+    const nextPage = () => {
+        if (pageNumber < pages.length) {
+            setPageNumber(prev => prev + 1)
+        }
+    }
+
+    const previousPage = () => {
+        if (pageNumber > 1) {
+            setPageNumber(prev => prev - 1)
+        }
+    }
 
     return(
         <>
@@ -50,6 +70,29 @@ export default function Series() {
                         <div className='date'>{ anime.year }</div>
                     </div>
                 ))}
+            </div>
+            <hr className='heading-rule'></hr>
+            <div className="pagination-container">
+                <p className="pagination-info">Page {pageNumber} of {pages.length}</p>
+                <div className="pagination">
+                    {/* Previous Button */}
+                    <button 
+                        className="pagination-btn" 
+                        onClick={() => previousPage()} 
+                        disabled={pageNumber === 1}
+                    >
+                        {'<'}
+                    </button>
+
+                    {/* Next Button */}
+                    <button 
+                        className="pagination-btn" 
+                        onClick={() => nextPage()} 
+                        disabled={pageNumber === pages.length}
+                    >
+                        {'>'}
+                    </button>
+                </div>
             </div>
         </>
     )
