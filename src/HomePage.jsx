@@ -11,6 +11,7 @@ export default function HomePage() {
     const [upcomingAnime, setUpcomingAnime] = useState([]);
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    let [pageNumber, setPageNumber] = useState(1);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -24,8 +25,6 @@ export default function HomePage() {
     
                 const data = await res.json();
                 setAnimeList(data.data);
-                //For debugging purposes
-                console.log(`Payload:`, data.data);
             } catch (error) {
                 setError(error.message);
                 console.error(`Error occured while fetching data: `, error);
@@ -38,8 +37,12 @@ export default function HomePage() {
 
     useEffect(() => {
         const getUpcomingAnime = async() => {
+            setIsLoading(true);
             try {
-                const res = await fetch(`https://api.jikan.moe/v4/seasons/upcoming?limit=6&page=1`);
+                const res = await fetch(`https://api.jikan.moe/v4/seasons/upcoming?limit=6&page=1`, {
+                    mode: 'cors',
+                    credentials: "same-origin"
+                });
 
                 if (!res.ok) {
                     throw new Error(`HTTP error!! status: ${res.status}`)
@@ -50,10 +53,17 @@ export default function HomePage() {
             } catch(error) {
                 setError(error.message);
                 console.error(`Error occured while fetching data: `, error);
+            } finally {
+                setIsLoading(false);
             }
         }
         getUpcomingAnime();
     }, []);
+
+    // const handlePageChange = () => {
+    //     setPageNumber(prevPage => prevPage + 1)
+    //     getOngoingAnime(pageNumber)
+    // }
 
     return (
         <>
@@ -86,9 +96,9 @@ export default function HomePage() {
                                 />
                                 </div>
                                 <div className="hero-info">
-                                <div className="hero-status">
+                                {/* <div className="hero-status">
                                     {anime.status === "Not yet aired" ? "Upcoming" : anime.status}
-                                </div>
+                                </div> */}
                                 <h2 className="hero-title">
                                     {anime.title}
                                     <span className="hero-title-jp">{anime.title_japanese}</span>
@@ -135,6 +145,17 @@ export default function HomePage() {
                         <div className='date'>{ anime.year }</div>
                     </div>
                 ))}
+            </div>
+            <hr className='heading-rule'></hr>
+            <div className="pagination-container">
+                <p className="pagination-info">Page 1</p>
+                <div className="pagination">
+                    <button className="pagination-btn" disabled>{'<'}</button>
+                    <button className="pagination-page active">1</button>
+                    {/* <button className="pagination-page">2</button>
+                    <button className="pagination-page">3</button> */}
+                    <button className="pagination-btn">{'>'}</button>
+                </div>
             </div>
         </>
     )
