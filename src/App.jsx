@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Popular from './Popular'
 import Movies from './Movies'
 import Series from './Series'
+import AnimeDetails from './AnimeDetails'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
             <Route path='/popular' element={<Popular/>}/>
             <Route path='/movies' element={<Movies/>}/>
             <Route path='/series' element={<Series/>}/>
+            <Route path='/anime/:id' element={<AnimeDetails/>}/>
           </Routes>
           <Footer/>
         </Router>

@@ -62,6 +62,10 @@ export default function HomePage() {
         getUpcomingAnime();
     }, []);
 
+    const handleAnimeClick = (id) => {
+        navigate(`/anime/${id}`)
+    }
+
     const handlePageChange = (totalItems) => {
         const totalPages = Math.ceil(totalItems / 24);
         setPages([...Array(totalPages).keys()].map(i => i + 1)); // Generates an array [1,2,3,...]
@@ -148,6 +152,7 @@ export default function HomePage() {
                     <div
                         className="anime-card"
                         key={anime.mal_id}
+                        onClick={() => handleAnimeClick(anime.mal_id)}
                         style={{ cursor: 'pointer' }}
                     >
                         <img

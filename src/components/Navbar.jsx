@@ -8,12 +8,12 @@ export default function Navbar() {
         <>
         <nav className="navbar">
             <div className="nav-container">
-                <img src="search-svgrepo-com.svg" alt="Search" className="nav-icon search-icon" />
+                <img src="./search-svgrepo-com.svg" alt="Search" className="nav-icon search-icon" />
 
                 <div className="logo-header"><span className='first-part-of-name'>Yume</span>Anime</div>
                 
                 <button className="menu-button" onClick={() => setIsOpen(!isOpen)}>
-                <img src="burger-menu-right-svgrepo-com.svg" height={30} width={30} alt="Menu" />
+                <img src="./burger-menu-right-svgrepo-com.svg" height={30} width={30} alt="Menu" />
                 </button>
 
                 {isOpen && (
