@@ -126,7 +126,7 @@ body {
     display: grid;
     margin-left: auto;
     margin-right: auto;
-    width: 1200px;
+    width: 100%;
     border: 6px solid #540D6E;
     border-radius: 6px;
 }
@@ -180,7 +180,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
-  background-color: #0f0f0f;
+  background-color: #0b0b0b;
 }
 
 .trailer-container {
@@ -235,6 +235,15 @@ body {
 
 .episode-count-name {
   display: grid;
+}
+
+.view-more {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #540D6E;
+  border-radius: 4px;
+  background: none;
+  color: white;
 }
 
 

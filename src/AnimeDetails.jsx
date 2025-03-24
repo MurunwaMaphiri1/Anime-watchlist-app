@@ -112,6 +112,8 @@ export default function AnimeDetails() {
                             );
                         })}
                         <button
+                        className="view-more"
+                        style={{fontFamily: "Quicksand"}}
                         onClick={() => showMoreItems()}
                         >
                             View More

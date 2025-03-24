@@ -3,6 +3,12 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
+
+
+    const handleHomeClick = () => {
+        navigate(`/`);
+    }
 
     return(
         <>
@@ -10,7 +16,11 @@ export default function Navbar() {
             <div className="nav-container">
                 <img src="./search-svgrepo-com.svg" alt="Search" className="nav-icon search-icon" />
 
-                <div className="logo-header"><span className='first-part-of-name'>Yume</span>Anime</div>
+                <div className="logo-header">
+                    <a onClick={() => handleHomeClick()}>
+                        <span className='first-part-of-name'>Yume</span>Anime
+                    </a>
+                </div>
                 
                 <button className="menu-button" onClick={() => setIsOpen(!isOpen)}>
                 <img src="./burger-menu-right-svgrepo-com.svg" height={30} width={30} alt="Menu" />
