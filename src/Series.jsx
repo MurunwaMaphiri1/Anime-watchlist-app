@@ -55,6 +55,7 @@ export default function Series() {
 
     return(
         <>
+        <div className='details-container'>
             <div className='heading'>
                 <h1>Series</h1>
             </div>
@@ -99,6 +100,7 @@ export default function Series() {
                         {'>'}
                     </button>
                 </div>
+            </div>
             </div>
         </>
     )

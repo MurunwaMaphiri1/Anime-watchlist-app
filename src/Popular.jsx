@@ -42,6 +42,7 @@ export default function Popular() {
 
     return(
         <>
+        <div className='details-container'>
             <div className='heading'>
                 <h1>Popular</h1>
             </div>
@@ -85,6 +86,7 @@ export default function Popular() {
                         {'>'}
                     </button>
                 </div>
+            </div>
             </div>
         </>
     )

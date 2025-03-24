@@ -50,6 +50,7 @@ export default function Movies() {
 
     return(
         <>
+        <div className='details-container'>
             <div className='heading'>
                 <h1>Movies</h1>
             </div>
@@ -93,6 +94,7 @@ export default function Movies() {
                         {'>'}
                     </button>
                 </div>
+            </div>
             </div>
         </>
     )

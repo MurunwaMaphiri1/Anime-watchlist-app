@@ -104,7 +104,10 @@ export default function HomePage() {
                                 className="hero-swiper"
                             >
                                 {upcomingAnime.map((anime) => (
-                                <SwiperSlide key={anime.mal_id}>
+                                <SwiperSlide 
+                                key={anime.mal_id}
+                                onClick={() => handleAnimeClick(anime.mal_id)}
+                                >
                                     <div className="hero-slide">
                                     <div className="hero-content">
                                         <div className="hero-poster">
