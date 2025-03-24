@@ -14,7 +14,6 @@ export default function Navbar() {
         <>
         <nav className="navbar">
             <div className="nav-container">
-                <img src="./search-svgrepo-com.svg" alt="Search" className="nav-icon search-icon" />
 
                 <div className="logo-header">
                     <a onClick={() => handleHomeClick()}>
@@ -23,7 +22,9 @@ export default function Navbar() {
                 </div>
                 
                 <button className="menu-button" onClick={() => setIsOpen(!isOpen)}>
-                <img src="./burger-menu-right-svgrepo-com.svg" height={30} width={30} alt="Menu" />
+                <svg className="menu-icon" fill="white" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2z"></path>
+                </svg>
                 </button>
 
                 {isOpen && (
