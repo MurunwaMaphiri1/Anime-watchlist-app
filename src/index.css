@@ -233,6 +233,10 @@ body {
   justify-content: space-between;
 }
 
+.episode-count-name {
+  display: grid;
+}
+
 
 /* Hero Swiper Styles */
 .hero-swiper-container {

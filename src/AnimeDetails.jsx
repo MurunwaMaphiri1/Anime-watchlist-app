@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Star, Clock } from "lucide-react";
 
 
 export default function AnimeDetails() {
     const { id } = useParams();
     const [animeDetails, setAnimeDetails] = useState('');
     const [episodes, setEpisodes] = useState([]);
+    const [visible, setVisible] = useState(12);
     const [isLoading, setIsLoading] = useState(true);
     
 
@@ -38,6 +40,10 @@ export default function AnimeDetails() {
         fetchAnimeDetails();
     }, [id]);
 
+    const showMoreItems = () => {
+        setVisible((prev) => prev + 12)
+    }
+
     if (isLoading) return <div>Loading...</div>;
     if (!animeDetails) return null;
 
@@ -55,6 +61,15 @@ export default function AnimeDetails() {
                 </div>
                 <h1 className="details-title">{animeDetails.title}</h1>
                 <h1 className="details-title-japanese">{animeDetails.title_japanese}</h1>
+                <h1 style={{ fontSize: 16, display: "flex", alignItems: "center", gap: 8 }}>
+                    <Star size={16} color="gold" /> {animeDetails.score}  
+                    <Clock 
+                    size={16} 
+                    color={animeDetails === 'Finished Airing' || 'Not yet aired' ? "grey" : "green"} 
+                    /> {
+                        animeDetails.status}
+                </h1>
+
                 <div className="rating">
                     {animeDetails.rating} 
                 </div>
@@ -79,20 +94,28 @@ export default function AnimeDetails() {
                     </h1>
                     <hr className='heading-rule'></hr>
                     <div className='episodes-container'>
-                        {episodes.map((episode) => {
+                        {episodes.slice(0, visible).map((episode) => {
                             // Check if aired is not null or empty
                             const airedDate = episode.aired ? episode.aired.split("T")[0] : "Unknown Date";
                             return (
                                 <div className="episode-container" key={episode.mal_id}>
-                                    <p>
-                                        {episode.title_japanese} 
-                                    </p>
+                                    <div className="episode-count-name">
+                                        <p>
+                                            Episode {episode.mal_id}<br></br>
+                                            {episode.title} 
+                                        </p>
+                                    </div>
                                     <p style={{ color: "grey" }}>
                                         {airedDate}
                                     </p>
                                 </div>
                             );
                         })}
+                        <button
+                        onClick={() => showMoreItems()}
+                        >
+                            View More
+                        </button>
                     </div>
 
                 </div>
