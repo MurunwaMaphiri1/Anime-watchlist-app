@@ -7,13 +7,10 @@ export default function Search() {
     const [animeList, setAnimeList] = useState([]);
     const [animeTitle, setAnimeTitle] = useState("");
     const [error, setError] = useState("");
-    const [visible, setVisible] = useState(5);
-    const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
 
 
         const getAnime = async() => {
-            setIsLoading(true);
             try {
                 const encodedTitle = encodeURIComponent(animeTitle);
                 const res = await fetch(`https://api.jikan.moe/v4/anime?q=${encodedTitle}`);
@@ -28,14 +25,8 @@ export default function Search() {
             } catch(error) {
                 setError(error.message);
                 console.log(`Error occured while fetching data: `, error)
-            } finally {
-                setIsLoading(false);
-            }
+            } 
         }
-
-    const showMoreItems = () => {
-        setVisible((prev) => prev + 5)
-    }
 
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
@@ -46,9 +37,6 @@ export default function Search() {
     const handleAnimeClick = (id) => {
         navigate(`/anime/${id}`)
     }
-
-    // if (isLoading) return <div>Loading...</div>;
-    // if (!anime) return null;
 
 
     return(
