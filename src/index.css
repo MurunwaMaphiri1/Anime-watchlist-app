@@ -149,14 +149,12 @@ body {
 }
 
 .container {
-    display: grid;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 15px;
+  padding: 0 15px;
 }
 
 .anime-card {
@@ -179,7 +177,7 @@ body {
     font-size: 1rem;
     font-weight: 500;
     color: #fff;
-    margin: 8px 0 4px 0;
+    margin: 8px 0;
     padding: 0;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -219,11 +217,13 @@ body {
 
 .details-title {
   font-size: 23px;
+  margin-bottom: 3%;
 }
 
 .details-title-japanese {
   font-size: medium;
   color: #540D6E;
+  margin-bottom: 3%;
 }
 
 .synopsis h1 {
@@ -443,6 +443,47 @@ body {
   .swiper-pagination-bullet-active {
     background: #FFD700;
   }
+
+  .search-component {
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border-radius: 7px;
+    background-color: #1c1c1c;
+  }
+
+  .outer-container {
+    display: grid;
+    margin-top: 10px;
+  }
+
+  .results-container-card {
+    width: 100%;
+    display: flex;
+    margin-bottom: 12px;
+  }
+
+  .results-container-card img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .results-details {
+    padding: 10px;
+    font-size: 13px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .result-synopsis {
+    white-space: nowrap;        /* Prevents text from wrapping */
+    overflow: hidden;           /* Hides overflowing text */
+    text-overflow: ellipsis;    /* Adds '...' when text overflows */
+    font-size: 13px;
+    width: 100%;                /* Ensures it takes full width */
+  }
   
   /* Responsive adjustments */
   @media (max-width: 1200px) {
@@ -498,7 +539,7 @@ body {
   
   @media (max-width: 480px) {
     .container {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
       padding: 0 5px;
       width: 100%;
@@ -508,7 +549,7 @@ body {
   /* Additional responsive tweaks */
   @media (max-width: 375px) {
     .container {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(1, 1fr);
       gap: 10px;
       padding: 0 3px;
       width: 100%;

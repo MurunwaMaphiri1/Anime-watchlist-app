@@ -7,6 +7,7 @@ import Popular from './Popular'
 import Movies from './Movies'
 import Series from './Series'
 import AnimeDetails from './AnimeDetails'
+import Search from './Search'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Route path='/movies' element={<Movies/>}/>
             <Route path='/series' element={<Series/>}/>
             <Route path='/anime/:id' element={<AnimeDetails/>}/>
+            <Route path='/search' element={<Search/>}/>
           </Routes>
           <Footer/>
         </Router>

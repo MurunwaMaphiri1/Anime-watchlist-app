@@ -61,7 +61,7 @@ export default function AnimeDetails() {
                 </div>
                 <h1 className="details-title">{animeDetails.title}</h1>
                 <h1 className="details-title-japanese">{animeDetails.title_japanese}</h1>
-                <h1 style={{ fontSize: 16, display: "flex", alignItems: "center", gap: 8 }}>
+                <h1 style={{ fontSize: 16, display: "flex", alignItems: "center", gap: 8, marginBottom: 5 }}>
                     <Star size={16} color="gold" /> {animeDetails.score}  
                     <Clock 
                     size={16} 
@@ -73,15 +73,20 @@ export default function AnimeDetails() {
                 <div className="rating">
                     {animeDetails.rating} 
                 </div>
-                <div className="hero-genres">
+                <div 
+                className="hero-genres"
+                style={{marginBottom: 7}}
+                >
                     {animeDetails.genres.map((genre, index) => (
                         <span key={genre.mal_id} className="hero-genre">
                             {genre.name}
                         </span>
                     ))}
                 </div>
-                <div className="synopsis">
-                    <h1>
+                <div 
+                className="synopsis"
+                >
+                    <h1 style={{marginBottom: 7}}>
                         Synopsis
                     </h1>
                     <p>
