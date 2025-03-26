@@ -7,6 +7,7 @@ export default function Movies() {
     const [error, setError] = useState("");
     let [pageNumber, setPageNumber] = useState(1);
     const [pages, setPages] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getMovies = async() => {
@@ -30,6 +31,10 @@ export default function Movies() {
         }
         getMovies();
     }, [pageNumber]);
+
+    const handleAnimeClick = (id) => {
+        navigate(`/anime/${id}`)
+    }
 
     const handlePageChange = (totalItems) => {
         const totalPages = Math.ceil(totalItems/24);
@@ -60,6 +65,7 @@ export default function Movies() {
                     <div
                         className="anime-card"
                         key={anime.mal_id}
+                        onClick={() => handleAnimeClick(anime.mal_id)}
                         style={{ cursor: 'pointer' }}
                     >
                         <img
