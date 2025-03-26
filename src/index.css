@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: "Quicksand", sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.navbar {
+  background-color: rgb(0, 0, 0);
+  border-bottom: 1px solid #0e0d0d;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center; 
+  width: 100%; 
+  position: relative;
+  z-index: 10;
+}
+
+.nav-container {
+  width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+
+.nav-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #000000;
+  padding: 30px 0 0 0;
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  color: white;
+  font-weight: bold;
+  font-size: 28px;
+  padding: 0 20px 20px 20px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.first-part-of-name {
+  color: purple;
+}
+
+.logo-header {
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+}
+
+.menu a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.menu-icon {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+}
+
+/*Jumbotron*/
+/* Hero Swiper Styles */
+.hero-swiper-container {
+  width: 100%;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.hero-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.hero-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.backdrop-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+  z-index: 2;
+}
+
+.backdrop-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero-poster {
+  flex-shrink: 0;
+  margin-right: 40px;
+}
+
+.poster-image {
+  width: 240px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.hero-info {
+  color: white;
+  max-width: 600px;
+}
+
+.hero-status {
+  display: inline-block;
+  background-color: #540D6E;
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.hero-title {
+  font-size: 42px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-title-jp {
+  display: block;
+  font-size: 18px;
+  margin-top: 5px;
+  opacity: 0.8;
+}
+
+.hero-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.hero-genre {
+  background-color: rgba(255,255,255,0.1);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.pagination-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination-info {
+  color: white;
+  font-size: 17px;
+}
+
+.pagination {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  width: 100%;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination-btn {
+  background: none;
+  border: 2px solid white;
+  width: 50%;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/*End of Jumbotron CSS*/
+
+.heading {
+    font-size: small;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px;
+}
+
+.heading-rule {
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 6px solid #540D6E;
+    border-radius: 6px;
+}
+
+/*Container for anime card*/
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  /* width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; */
+  gap: 15px;
+  padding: 0 15px;
+}
+
+.anime-card {
+    position: relative;
+    /* overflow: hidden; */
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    max-width: 240px; 
+}
+
+.anime-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.anime-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    margin: 8px 0;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    line-height: 1.2;
+}
+
+/* Container for Details page and HomePage */
+.details-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #0b0b0b;
+  overflow: hidden;
+}
+
+.trailer-container {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%; 
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.trailer-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.details-title {
+  font-size: 23px;
+  margin-bottom: 3%;
+}
+
+.details-title-japanese {
+  font-size: medium;
+  color: #540D6E;
+  margin-bottom: 3%;
+}
+
+.synopsis h1 {
+  font-size: 18px;
+}
+
+.synopsis p {
+  font-size: 15px;
+}
+
+.episode-info h1 {
+  font-size: 18px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.episode-container {
+  display: flex;
+  background-color: rgba(255,255,255,0.1);
+  /* padding: 6px 12px; */
+  padding: 25px;
+  border-radius: 4px;
+  font-size: 14px;
+  gap: 5px;
+  margin-bottom: 10px;
+  margin-top: 15px;
+  justify-content: space-between;
+}
+
+.episode-count-name {
+  display: grid;
+}
+
+.view-more {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #540D6E;
+  border-radius: 4px;
+  background: none;
+  color: white;
+
+}
+
+
+  .footer {
+    display: grid;
+    margin: 50px;
+    text-align: center;
+  }
+
+  /*Search Page*/
+  .search-component {
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border-radius: 7px;
+    background-color: #1c1c1c;
+  }
+
+  .outer-container {
+    display: grid;
+    margin-top: 10px;
+  }
+
+  .results-container-card {
+    width: 100%;
+    display: flex;
+    margin-bottom: 12px;
+  }
+
+  .results-container-card img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .results-details {
+    padding: 10px;
+    font-size: 13px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1200px) {
+    .hero-content {
+      width: 100%;
+      padding: 0 20px;
+    }
+    
+    .hero-title {
+      font-size: 36px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .hero-poster {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+    
+    .poster-image {
+      width: 180px;
+    }
+    
+    .hero-title {
+      font-size: 30px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .container {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px; 
+      padding: 0 15px; 
+      width: 100%;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding: 0 10px;
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 0 5px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 375px) {
+    .container {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 10px;
+      padding: 0 3px;
+      width: 100%;
+    }
+  }
