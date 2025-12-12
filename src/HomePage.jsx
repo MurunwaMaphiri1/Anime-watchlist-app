@@ -68,7 +68,7 @@ export default function HomePage() {
 
     const handlePageChange = (totalItems) => {
         const totalPages = Math.ceil(totalItems / 24);
-        setPages([...Array(totalPages).keys()].map(i => i + 1)); // Generates an array [1,2,3,...]
+        setPages([...Array(totalPages).keys()].map(i => i + 1));
     };
 
     const nextPage = () => {
@@ -81,6 +81,11 @@ export default function HomePage() {
         if (pageNumber > 1) {
             setPageNumber(prev => prev - 1)
         }
+    }
+
+    const modifiedUrl = (url) => {
+        const videoId = url.split("/embed/")[1].split("?")[0];
+        return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
     }
 
     return (
@@ -137,7 +142,7 @@ export default function HomePage() {
                                     <div className="hero-backdrop">
                                         <div className="backdrop-overlay"></div>
                                         <img 
-                                            src={`https://img.youtube.com/vi/${anime.trailer.youtube_id}/maxresdefault.jpg`}
+                                            src={modifiedUrl(anime.trailer.embed_url)}
                                             alt="Trailer thumbnail"
                                             className="backdrop-image"
                                         />
