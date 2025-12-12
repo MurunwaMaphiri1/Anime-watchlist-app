@@ -52,7 +52,7 @@ export default function AnimeDetails() {
             <div className="details-container">
                 <div className="trailer-container">
                     <iframe 
-                        src={`https://www.youtube.com/embed/${animeDetails.trailer.youtube_id}?enablejsapi=1&wmode=opaque&autoplay=0&showinfo=0`}
+                        src={`${animeDetails.trailer.embed_url}`}
                         title="YouTube video player"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
